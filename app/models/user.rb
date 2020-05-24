@@ -1,8 +1,17 @@
 class User < ApplicationRecord
-  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
+  before_validation :set_name, on: :create
+  validates :name, presence: true, length: { maximum: 35 }
 
   has_many :events
 
-  validates :name, presence: true, length: { maximum: 35 }
-  validates :email, uniqueness: true, presence: true, length: { maximum: 255 }, format: { with: EMAIL_REGEX }
+  private
+
+  def set_name
+    self.name = "Комрат №#{rand(777)}" if self.name.blank?
+  end
 end
