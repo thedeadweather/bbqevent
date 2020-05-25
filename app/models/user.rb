@@ -7,7 +7,7 @@ class User < ApplicationRecord
   before_validation :set_name, on: :create
   validates :name, presence: true, length: { maximum: 35 }
 
-  has_many :events
+  has_many :events, dependent: :destroy
 
   private
 
