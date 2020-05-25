@@ -19,3 +19,4 @@ require("jquery")
 
 import 'bootstrap'
 import './src/application.scss'
+import './src/custom.scss'
