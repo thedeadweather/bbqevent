@@ -110,6 +110,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pg (1.2.3)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -211,6 +212,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
+  pg
   puma (~> 4.1)
   rails (~> 6.0.3)
   sass-rails (>= 6)
