@@ -38,27 +38,24 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "BBQ!", root_path, class: 'navbar-brand' %>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <% if user_signed_in? #хелпер девайса %>
-              <li><%= link_to 'Профиль', current_user %></li>
-              <li><%= link_to 'Выйти', destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to 'Войти', new_user_session_path %></li>
-              <li><%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
-            <% end %>
-          </ul>
+    <nav class="navbar navbar-expand navbar-default bg-light">
+      <div class="collapse navbar-collapse navbar-responsive-collapse"> 
+        <div class="container justify-content-start">
+          <%= link_to "BBQ!", root_path, class: 'navbar-brand' %>
+          <div class="nav">
+            <ul class="navbar-nav">
+              <% if user_signed_in? #хелпер девайса %>
+                <li class="nav-item"><%= link_to 'Профиль', current_user, class: 'nav-link' %></li>
+                <li class="nav-item"><%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to 'Войти', new_user_session_path, class: 'nav-link' %></li>
+                <li class="nav-item"><%= link_to 'Зарегистрироваться', new_user_registration_path, class: 'nav-link' %></li>
+              <% end %>
+            </ul>
+          </div>  
         </div>
       </div>
-    </div>
+    </nav>
 
     <div class="container">
       <div class="row">
