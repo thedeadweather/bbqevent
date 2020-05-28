@@ -3,8 +3,8 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-group row">
-    <div class="col-sm-2">  
+  <div class="form-group row align-items-center">
+    <div class="col-sm-2 pr-0">  
       <i class="fa fa-envelope"></i>
       <%= f.label :email %>
     </div>
@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <div class="form-group row">
-    <div class="col-sm-2">  
+  <div class="form-group row align-items-center">
+    <div class="col-sm-2 pr-0">  
       <i class="fa fa-lock"></i>
       <%= f.label :password, 'Пароль', class: "col-form-label" %>
     </div>
@@ -24,7 +24,7 @@
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="form-group form-check">
+    <div class="form-group form-check align-items-center">
       <%= f.check_box :remember_me, class: "form-check-input" %>
       <%= f.label :remember_me, 'Запомнить', class: "form-check-label" %>
     </div>
