@@ -1,3 +1,16 @@
+<% if flash.any? %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-primary mt-3">
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <ul>
+        <li>
+          <%= value %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+<% end %>  
+
 <div class="text-center mb-3">
   <h1><%= @user.name %></h1>  
   <%= image_tag user_avatar(@user) %>

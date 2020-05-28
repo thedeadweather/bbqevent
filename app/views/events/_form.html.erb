@@ -2,27 +2,43 @@
 <%= form_for(@event) do |f| %>
   <%= render partial: 'partials/form_errors', locals: {model: @event} %>
 
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control' %>
+  <div class="form-group flex-column row">
+    <div class="col-md">
+      <%= f.label :title, class: "col-form-label" %>
+    </div>
+    <div class="col-md">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :address %>
-    <%= f.text_field :address, class: 'form-control' %>
+  <div class="form-group flex-column row">
+    <div class="col">
+      <%= f.label :address, class: "col-form-label" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :datetime %>
-    <p><%= f.datetime_select :datetime, class: 'form-control' %></p>
+  <div class="form-group flex-column row">
+    <div class="col">
+      <%= f.label :datetime, class: "col-form-label" %>
+    </div>
+    <div class="col">
+      <p><%= f.datetime_select :datetime, class: 'form-control' %></p>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
+  <div class="form-group flex-column row">
+    <div class="col">
+      <%= f.label :description, class: "col-form-label" %>
+    </div>
+    <div class="col">
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="actions">
+  <div class="form-group">      
     <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
     или <%= link_to 'вернуться', :back %>
   </div>

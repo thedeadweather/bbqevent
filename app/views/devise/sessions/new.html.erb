@@ -1,4 +1,4 @@
-<h2 class="my-3">Вход</h2>
+<h2 class="my-3">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -6,7 +6,7 @@
   <div class="form-group row align-items-center">
     <div class="col-sm-2 pr-0">  
       <i class="fa fa-envelope"></i>
-      <%= f.label :email %>
+      <%= f.label :email, class: "col-form-label" %>
     </div>
     <div class="col-sm-6">  
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
@@ -16,7 +16,7 @@
   <div class="form-group row align-items-center">
     <div class="col-sm-2 pr-0">  
       <i class="fa fa-lock"></i>
-      <%= f.label :password, 'Пароль', class: "col-form-label" %>
+      <%= f.label :password, class: "col-form-label" %>
     </div>
     <div class="col-sm-6">  
       <%= f.password_field :password, class: "form-control" %>

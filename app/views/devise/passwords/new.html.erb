@@ -1,4 +1,4 @@
-<h2 class="my-5">Забыли пароль?</h2>
+<h2 class="my-5">Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.submit "Отправить инструкцию на почту", class: "btn btn-secondary" %>
+    <%= f.submit "Send me reset password instructions", class: "btn btn-secondary" %>
   </div>
 <% end %>
 
