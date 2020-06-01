@@ -14,10 +14,8 @@ class Subscription < ApplicationRecord
 
   validate :subscribe_event_owner, on: :create
 
-
   def subscribe_event_owner
-    ev = Event.find_by(id: event)
-    errors.add(:user, I18n.t(:cant_be_subscriber)) if user == ev.user
+    errors.add(:user, I18n.t(:cant_be_subscriber)) if user == event.user
   end
 
   # переопределяем метод, если есть юзер, выдаем его имя,
