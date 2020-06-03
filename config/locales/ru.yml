@@ -70,4 +70,4 @@ ru:
             user:
               cant_be_subscriber: "Организатор события не может на него подписаться"
             user_email:
-              user_email_is_existed: "Пользователь с такой почтой уже зарегистрирован"
+              user_email_is_existed: "пользователя уже существует"

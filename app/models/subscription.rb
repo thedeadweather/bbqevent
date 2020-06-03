@@ -15,14 +15,6 @@ class Subscription < ApplicationRecord
   validate :subscribe_event_owner, on: :create
   validate :existed_email, on: :create, unless: -> { user.present? }
 
-  def existed_email
-    errors.add(:user_email, :user_email_is_existed) if User.find_by(email: user_email).present?
-  end
-
-  def subscribe_event_owner
-    errors.add(:user, :cant_be_subscriber) if user == event.user
-  end
-
   # переопределяем метод, если есть юзер, выдаем его имя,
   # если нет -- дергаем исходный переопределенный метод
   def user_name
@@ -41,5 +33,15 @@ class Subscription < ApplicationRecord
     else
       super
     end
+  end
+
+  private
+
+  def existed_email
+    errors.add(:user_email, :user_email_is_existed) if User.find_by(email: user_email).present?
+  end
+
+  def subscribe_event_owner
+    errors.add(:user, :cant_be_subscriber) if user == event.user
   end
 end
