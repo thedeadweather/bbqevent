@@ -20,9 +20,6 @@ ru:
         description: 'Описание'
 
 
-
-
-
   # Перевод сообщений, которые отправляет контроллер
   controllers:
     events:
@@ -46,6 +43,7 @@ ru:
     name: 'Шашлыки'
     company: 'Хороший программист'
 
+
   comments:
     comment:
       destroy_confirm: 'Вы уверены, что хотите удалить этот комменатрий?'
@@ -53,12 +51,21 @@ ru:
   subscriptions:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+
   
   are_you_sure: 'Вы уверенны?'
+
 
   error:
     one: '%{count} ошибка'
     few: '%{count} ошибки'
     many: '%{count} ошибок'
 
-  cant_be_subscriber: "Организатор события не может на него подписаться"
+
+  activerecord:
+    errors:
+      models:
+        subscription:
+          attributes:
+            user:
+              cant_be_subscriber: "Организатор события не может на него подписаться"
