@@ -14,10 +14,16 @@
 }
 
 /* Avatars for users & events */
+
 .img-icon, .img-icon-small {
   height: 50px;
   width: auto;
   border-radius: 50%;
+}
+
+.user-avatar .img-icon {
+  margin-top: -2px;
+  height: 20px;
 }
 
 /* Thumbnails for events/index */

@@ -39,7 +39,7 @@ class SubscriptionsController < ApplicationController
   end
 
     # Only allow a list of trusted parameters through.
-    def subscription_params
-      params.fetch(:subscription, {}).permit(:user_email, :user_name)
-    end
+  def subscription_params
+    params.fetch(:subscription, {}).permit(:user_email, :user_name)
+  end
 end
