@@ -84,3 +84,20 @@ ru:
               cant_be_subscriber: "Организатор события не может на него подписаться"
             user_email:
               user_email_is_existed: "пользователя уже существует"
+
+
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+    subscription:
+      title: 'Новая подписка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'

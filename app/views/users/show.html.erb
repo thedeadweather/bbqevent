@@ -22,7 +22,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-	  <% if @user.events.any? %>
+	  <% if @user.events.any? %> 
 	    <h3 class="my-3">Организовал:</h3>
 	    <div class="row">
 	  	  <%= render partial: 'events/event', collection: @user.events %>
