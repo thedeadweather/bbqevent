@@ -61,16 +61,19 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  # отправка почты по протоколу SMTP
-  config.action_mailer.delivery_method = :smtp
 
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
+  # отправка почты по протоколу SMTP
+  # config.action_mailer.delivery_method = :smtp
   # Настройки для работы через GMail аккаунт
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: '587',
-    user_name: '#', # не используйте для тестов свои реальные ящики
-    password: Rails.application.credentials.mailer[:password],
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.smtp_settings = {
+  #   address: 'smtp.gmail.com',
+  #   port: '587',
+  #   user_name: '#', # не используйте для тестов свои реальные ящики
+  #   password: Rails.application.credentials.mailer[:password],
+  #   authentication: 'plain',
+  #   enable_starttls_auto: true
+  # }
 end
