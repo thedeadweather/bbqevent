@@ -37,6 +37,15 @@
       <%= f.text_area :description, class: 'form-control' %>
     </div>
   </div>
+  
+  <div class="form-group flex-column row">
+    <div class="col">
+      <%= f.label :pincode, class: "col-form-label" %>
+    </div>
+    <div class="col">
+      <%= f.text_field :pincode, class: 'form-control' %>
+    </div>
+  </div>
 
   <div class="form-group">      
     <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
