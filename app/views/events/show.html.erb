@@ -1,3 +1,9 @@
+<% content_for :js_includes do %>
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=5a1143d1-7c45-4f8c-94d7-e81400878303&lang=ru_RU" type="text/javascript">
+  </script>
+  <%= javascript_pack_tag "maps" %>
+<% end %>
+
 <div class="row flex-column">
   
   <% if flash.any? %>
@@ -42,55 +48,53 @@
             class="buffer-both map-form d-inline"
             data-address="<%= @event.address %>">    
           </div>
-
         </div>
       </div>
     </div>
-      <div class="row">
-        <div class="col-md-8">
-          <div class="event-photos">
-            <%# Выводим все фотографии события %>
-            <div class="event-photos-gallery">
-              <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
-            </div>
-            <div class="event-photo-form">
-              <%= render partial: 'photos/form', locals: { photo: @new_photo || @event.photos.build } %>
-            </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="event-photos">
+          <%# Выводим все фотографии события %>
+          <div class="event-photos-gallery">
+            <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
           </div>
-          
-          <div class="event-comments buffer-top">
-            <%= render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build } %>
-            <div class="buffer-both">
-              <%= render partial: 'comments/comment', collection: @event.comments.except(@new_comment) %>
-            </div>
+          <div class="event-photo-form">
+            <%= render partial: 'photos/form', locals: { photo: @new_photo || @event.photos.build } %>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="event-owner">
-            <h4>Зовет:</h4>
-            <p><%= render partial: 'users/user', object: @event.user %></p>
+          
+        <div class="event-comments buffer-top">
+          <%= render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build } %>
+          <div class="buffer-both">
+            <%= render partial: 'comments/comment', collection: @event.comments.except(@new_comment) %>
           </div>
-          <div class="event-subscriptions">
-            <h4>Пойдут:</h4>
-            <div>
-              <p>
-              <%= render partial: 'subscriptions/subscription',
-              collection: @event.subscriptions.except(@new_subscription) %>
-              </p>
-            </div>
-          </div>
-          <% unless @event.user == current_user %>
-            <div class="event-subscription-form">
-              <h4>Я пойду:</h4>
-              <div>
-                <%= render partial: 'subscriptions/form', locals: {
-                subscription: @new_subscription || @event.subscriptions.build
-                } %>
-              </div>
-            </div>
-          <% end %>
         </div>
       </div>
-
+      <div class="col-md-4">
+        <div class="event-owner">
+          <h4>Зовет:</h4>
+          <p><%= render partial: 'users/user', object: @event.user %></p>
+        </div>
+        <div class="event-subscriptions">
+          <h4>Пойдут:</h4>
+          <div>
+            <p>
+            <%= render partial: 'subscriptions/subscription',
+              collection: @event.subscriptions.except(@new_subscription) %>
+            </p>
+          </div>
+        </div>
+        <% unless @event.user == current_user %>
+          <div class="event-subscription-form">
+            <h4>Я пойду:</h4>
+            <div>
+              <%= render partial: 'subscriptions/form', locals: {
+                subscription: @new_subscription || @event.subscriptions.build
+              } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

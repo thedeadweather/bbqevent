@@ -7,10 +7,9 @@
     <title><%= content_for?(:title) ? yield(:title) : "Bbq" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=5a1143d1-7c45-4f8c-94d7-e81400878303&lang=ru_RU" type="text/javascript">
-    </script>
     <%= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :js_includes %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
