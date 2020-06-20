@@ -1,7 +1,10 @@
 <% content_for :js_includes do %>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=5a1143d1-7c45-4f8c-94d7-e81400878303&lang=ru_RU" type="text/javascript">
   </script>
-  <%= javascript_pack_tag "maps" %>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js.map" integrity="undefined" crossorigin="anonymous"></script>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css", integrity: "sha256-HAaDW5o2+LelybUhfuk0Zh2Vdk8Y2W2UeKmbaXhalfA=", crossorigin: "anonymous" %>
+  <%= javascript_pack_tag "maps" %>  
+  <%= javascript_pack_tag "js_photos" %>  
 <% end %>
 
 <div class="row flex-column">
@@ -54,15 +57,17 @@
     <div class="row">
       <div class="col-md-8">
         <div class="event-photos">
+
           <%# Выводим все фотографии события %>
           <div class="event-photos-gallery">
             <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
           </div>
+          
           <div class="event-photo-form">
             <%= render partial: 'photos/form', locals: { photo: @new_photo || @event.photos.build } %>
           </div>
         </div>
-          
+
         <div class="event-comments buffer-top">
           <%= render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build } %>
           <div class="buffer-both">
