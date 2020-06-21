@@ -1,12 +1,11 @@
 <% content_for :js_includes do %>
-  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css", integrity: "sha256-HAaDW5o2+LelybUhfuk0Zh2Vdk8Y2W2UeKmbaXhalfA=", crossorigin: "anonymous" %>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js" integrity="sha256-jGAkJO3hvqIDc4nIY1sfh/FPbV+UK+1N+xJJg6zzr7A=" crossorigin="anonymous"></script>
+ 
   <script src="https://api-maps.yandex.ru/2.1/?apikey=5a1143d1-7c45-4f8c-94d7-e81400878303&lang=ru_RU" type="text/javascript">
   </script>
   
   <%= javascript_pack_tag "maps" %>  
-  <%= javascript_pack_tag "js_photos" %>    
+  <%= javascript_pack_tag "ekko-lightbox" %>  
+  <%= javascript_pack_tag "js_photos" %>  
 <% end %>
 
 <div class="row flex-column">
