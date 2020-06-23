@@ -1,10 +1,10 @@
 <%# Паршал для вывода отдельной фотографии %>
-<div class="event-photo buffer-both">
+<div class="event-photo buffer-both container">
   <% unless photo.photo.blank? %>
     <% image_title = "Добавил #{render partial: 'users/user', object: photo.user}" %>
-    <%= link_to image_tag(photo.photo.thumb.url, class: 'img-fluid'), photo.photo.url, data: {
-      toggle: 'lightbox', title: image_title, gallery: 'event-photos'
-    } %>  
+    <a href="<%= photo.photo.url %>" data-lcl-txt="<%= image_title %>" data-lcl-author="" class="mybox">
+      <img src="<%= photo.photo.thumb.url %>">
+    </a>
   <% end %>
 </div>
 

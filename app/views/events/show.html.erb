@@ -1,11 +1,7 @@
 <% content_for :js_includes do %>
- 
-  <script src="https://api-maps.yandex.ru/2.1/?apikey=5a1143d1-7c45-4f8c-94d7-e81400878303&lang=ru_RU" type="text/javascript">
-  </script>
   
-  <%= javascript_pack_tag "maps" %>  
-  <%= javascript_pack_tag "ekko-lightbox" %>  
-  <%= javascript_pack_tag "js_photos" %>  
+  <%= javascript_include_tag "https://api-maps.yandex.ru/2.1/?apikey=5a1143d1-7c45-4f8c-94d7-e81400878303&lang=ru_RU" %> 
+  <%= javascript_pack_tag "maps", 'data-turbolinks-track': 'reload' %>     
 <% end %>
 
 <div class="row flex-column">
@@ -104,3 +100,7 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag "alloy_finger" %> 
+<%= javascript_pack_tag "lc_lightbox" %> 
+<%= javascript_pack_tag "lbscript" %> 
