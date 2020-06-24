@@ -1,7 +1,11 @@
 <%# Паршал для вывода отдельной фотографии %>
-<div class="event-photo buffer-both container">
+<div class="event-photo buffer-both d-inline">
   <% unless photo.photo.blank? %>
     <% image_title = "Добавил #{render partial: 'users/user', object: photo.user}" %>
+    <% if current_user_can_edit?(photo) %>
+      <% image_title += " #{link_to fa_icon('trash'), event_photo_path(photo.event, photo), method: :delete, data: {confirm: 'Точно удалить?'}}" %>
+    <% end %>
+
     <a href="<%= photo.photo.url %>" data-lcl-txt="<%= image_title %>" data-lcl-author="" class="mybox">
       <img src="<%= photo.photo.thumb.url %>">
     </a>

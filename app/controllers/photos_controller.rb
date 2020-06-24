@@ -4,6 +4,7 @@ class PhotosController < ApplicationController
 
   # Для действия destroy нужно получить из базы саму фотографию
   before_action :set_photo, only: [:destroy]
+  skip_before_action :verify_authenticity_token, only: [:destroy]
 
   # Действие для создания новой фотографии
   # Обратите внимание, что фотку может сейчас добавить даже неавторизованный пользовать

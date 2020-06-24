@@ -52,20 +52,20 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
-        <div class="event-photos">
+      <div class="col-md-8 border container">
+        <div class="event-photos px-0">
 
           <%# Выводим все фотографии события %>
           <div class="event-photos-gallery">
             <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
           </div>
           
-          <div class="event-photo-form">
+          <div class="event-photo-form mt-3">
             <%= render partial: 'photos/form', locals: { photo: @new_photo || @event.photos.build } %>
           </div>
         </div>
 
-        <div class="event-comments buffer-top">
+        <div class="event-comments buffer-top flex-row">
           <%= render partial: 'comments/form', locals: { comment: @new_comment || @event.comments.build } %>
           <div class="buffer-both">
             <%= render partial: 'comments/comment', collection: @event.comments.except(@new_comment) %>
