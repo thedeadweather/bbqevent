@@ -62,9 +62,20 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :mailjet
   config.action_mailer.perform_deliveries = true
 
+  # config.action_mailer.delivery_method = :smtp
+  # отправка почты через mailjet
+  # ActionMailer::Base.smtp_settings = {
+  #   address:              'in-v3.mailjet.com',
+  #   port:                 '587',
+  #   user_name:            ENV['MAILJET_API_KEY'],
+  #   password:             ENV['MAILJET_SECRET_KEY'],
+  #   enable_starttls_auto: true,
+  #   authentication: 'plain'
+  # }
   # отправка почты по протоколу SMTP
   # config.action_mailer.delivery_method = :smtp
   # Настройки для работы через GMail аккаунт
