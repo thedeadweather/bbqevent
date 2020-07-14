@@ -61,7 +61,7 @@ ru:
 
     new_password: "Новый пароль"  
     once_again: "Еще раз"
-    apply_new_password: "Поменять пароль"
+    apply: "Применить"
 
   errors:
     messages:

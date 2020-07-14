@@ -1,7 +1,7 @@
 <% errors = model.errors %>
 
 <% if errors.any? %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <div class="mt-3 alert alert-danger alert-dismissible fade show" role="alert">
     <div class="lead buffer-bottom">
       В вашей форме <%= t :error, count: errors.count %>
     </div>
