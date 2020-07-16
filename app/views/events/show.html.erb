@@ -77,15 +77,17 @@
           <h4>Зовет:</h4>
           <p><%= render partial: 'users/user', object: @event.user %></p>
         </div>
-        <div class="event-subscriptions">
-          <h4>Пойдут:</h4>
-          <div>
-            <p>
-            <%= render partial: 'subscriptions/subscription',
-              collection: @event.subscriptions.except(@new_subscription) %>
-            </p>
+        <% if @event.subscriptions.except(@new_subscription).any? %>
+          <div class="event-subscriptions">
+            <h4>Пойдут:</h4>
+            <div>
+              <p>
+              <%= render partial: 'subscriptions/subscription',
+                collection: @event.subscriptions.except(@new_subscription) %>
+              </p>
+            </div>
           </div>
-        </div>
+        <% end %>
         <% unless @event.user == current_user %>
           <div class="event-subscription-form">
             <h4>Я пойду:</h4>
