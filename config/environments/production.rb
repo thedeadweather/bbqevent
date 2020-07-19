@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Базовый урл сайта, для генерации правильных ссылок в письмах
-  config.action_mailer.default_url_options = {host: 'tdwevent.herokuapp.com'}
+  config.action_mailer.default_url_options = {host: 'dwkebabs.ru'}
   # Вываливать ли посетителю сайта ошибки при отправке писем
   config.action_mailer.raise_delivery_errors = false
   # Делать рассылку писем (если false — мэйлер только имитирует работу, реальных писем не уходит)
