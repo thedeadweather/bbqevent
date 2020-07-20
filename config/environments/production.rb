@@ -96,7 +96,17 @@ Rails.application.configure do
   # Делать рассылку писем (если false — мэйлер только имитирует работу, реальных писем не уходит)
   config.action_mailer.perform_deliveries = true
   # отправка почты через mailjet
-  config.action_mailer.delivery_method = :mailjet
+  config.action_mailer.delivery_method = :smtp
+    # Настройки для Sendgrid
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'dwkebabs.ru',
+    :enable_starttls_auto => true
+  }
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
