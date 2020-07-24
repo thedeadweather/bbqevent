@@ -1,6 +1,6 @@
 class EventPolicy < ApplicationPolicy
   def create?
-    show?
+    user.present?
   end
 
   def edit?
@@ -12,7 +12,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def show?
-    user.present?
+    record.present?
   end
 
   def update?

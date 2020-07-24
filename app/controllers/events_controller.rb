@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
   before_action :password_guard!, only: [:show]
   after_action :verify_authorized, only: %i[show edit update destroy]
+  after_action :verify_policy_scoped, only: :index
 
   # GET /events
   # GET /events.json
@@ -73,14 +74,17 @@ class EventsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-  def  set_event
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
     @event = Event.find(params[:id])
   end
+
   # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:address, :title, :datetime, :description, :pincode)
   end
+
   def password_guard!
     return true if @event.pincode.blank?
     return true if signed_in? && current_user == @event.user
