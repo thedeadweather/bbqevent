@@ -1,4 +1,8 @@
 class EventPolicy < ApplicationPolicy
+  def create?
+    show?
+  end
+
   def edit?
     update?
   end

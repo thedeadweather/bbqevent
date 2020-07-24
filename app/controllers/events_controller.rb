@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
   end
 
   # GET /events/1
@@ -33,6 +33,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
+    authorize @event
 
     respond_to do |format|
       if @event.save
@@ -48,8 +49,8 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    authorize @event
     respond_to do |format|
-      authorize @event
       if @event.update(event_params)
         format.html { redirect_to @event, notice: I18n.t('controllers.events.updated') }
         format.json { render :show, status: :ok, location: @event }
