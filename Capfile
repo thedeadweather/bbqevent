@@ -33,7 +33,8 @@ require "capistrano/bundler"
 # require "capistrano/rails/assets"
 # require "capistrano/rails/migrations"
 require "capistrano/passenger"
-require 'capistrano/rails'
+require "capistrano/rails"
+require "capistrano-resque"
 
 set :rbenv_type, :user
 set :rbenv_ruby, '2.7.0'
