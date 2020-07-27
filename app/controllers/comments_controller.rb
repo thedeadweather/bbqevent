@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
     # XXX: Этот метод может выполняться долго из-за большого числа подписчиков
     # поэтому в реальных приложениях такие вещи надо выносить в background задачи!
     all_emails.each do |mail|
-      EventMailer.comment(event, comment, mail).deliver_now
+      EventMailer.comment(event, comment, mail).deliver_later
     end
   end
 

@@ -15,6 +15,11 @@ class User < ApplicationRecord
   after_commit :link_subscriptions, on: :create
 
   mount_uploader :avatar, AvatarUploader
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   private
 
   def set_name
@@ -24,4 +29,5 @@ class User < ApplicationRecord
   def link_subscriptions
     Subscription.where(user_id: nil, user_email: self.email).update_all(user_id: self.id)
   end
+
 end

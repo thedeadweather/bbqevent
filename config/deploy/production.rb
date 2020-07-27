@@ -6,7 +6,7 @@
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-server 'dwkebabs.ru', user: 'deploy', roles: %w[app db web]
+server 'dwkebabs.ru', user: 'deploy', roles: %w[app db web resque_worker]
 
 
 # role-based syntax
@@ -31,6 +31,10 @@ server 'dwkebabs.ru', user: 'deploy', roles: %w[app db web]
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
+# При запуске воркера загружать Rails приложение
+set :resque_environment_task, true
+# Будет запущен один воркер, обслуживающий очереди с именем "tubilinkz*"
+set :workers, { "#{fetch(:application)}*" => 1 }
 
 
 # Custom SSH Options

@@ -33,6 +33,9 @@ gem 'rmagick'
 gem 'fog-aws'
 gem 'mailjet'
 
+# backend adapter
+gem 'resque'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -60,6 +63,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-bundler', '~> 2.0'
+  gem "capistrano-resque", "~> 0.2.2", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
