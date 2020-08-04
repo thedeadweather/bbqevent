@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_132608) do
+ActiveRecord::Schema.define(version: 2020_08_04_203414) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 2020_06_14_132608) do
     t.integer "user_id"
     t.string "pincode"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "provider"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -78,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_132608) do
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "identities", "users"
   add_foreign_key "photos", "events"
   add_foreign_key "photos", "users"
   add_foreign_key "subscriptions", "events"

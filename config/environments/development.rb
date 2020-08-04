@@ -69,4 +69,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :inline
   # Префикс для имени очередей
   config.active_job.queue_name_prefix = "dwkebabs_#{Rails.env}"
+  # lvh mirror & ssl config
+  config.hosts << "lvh.me"
+  config.force_ssl = true
 end

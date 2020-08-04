@@ -34,5 +34,10 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # preload_app!
 
+# ssl connection config
+# ssl_bind 'localhost', '9292',
+  # key:'/home/tdw/.ssh/server.key',
+  # cert: '/home/tdw/.ssh/server.crt'
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
