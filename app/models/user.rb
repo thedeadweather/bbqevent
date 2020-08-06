@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :comments
   has_many :subscriptions
+  has_one :identity, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 35 }
 
@@ -24,15 +25,16 @@ class User < ApplicationRecord
   end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
-    # находим identity и текущего юзера если такие есть
+    # находим или создаем identity
     identity = Identity.find_for_oauth(auth)
+    # опеределяем есть ли юзер
     user = signed_in_resource ? signed_in_resource : identity.user
 
-    # Создаем юзера если текущего нет
+    # Если юзера нет по identity или это не текущий юзер то проверяем по почте
     if user.nil?
       # Достаём email из токена
       email = auth.info.email
-      user = User.where(:email => email).first
+      user = User.where(email: email).first
       # если не найден по почте, то создаем нового
       if user.nil?
         user = User.new(
@@ -44,6 +46,7 @@ class User < ApplicationRecord
         user.save!
       end
     end
+
     #связываем identity с юзером
     if identity.user != user
       identity.user = user

@@ -2,7 +2,7 @@ class Identity < ApplicationRecord
   belongs_to :user, optional: true
 
   validates_presence_of :url, :provider
-  validates_uniqueness_of :url, :scope => :provider
+  validates_uniqueness_of :url, scope: :provider
 
   def self.find_for_oauth(auth)
     provider = auth.provider

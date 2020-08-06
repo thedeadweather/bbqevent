@@ -14,7 +14,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
            kind: "#{provider}".capitalize,
            reason: 'authentication error'
           )
-          session["devise.#{provider}_data"] = request.env["omniauth.auth"]
           redirect_to root_path
         end
       end
