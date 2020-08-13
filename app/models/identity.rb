@@ -1,4 +1,5 @@
 class Identity < ApplicationRecord
+  # Хранит инфу об аутентификации юзера через соцсети
   belongs_to :user, optional: true
 
   validates_presence_of :url, :provider

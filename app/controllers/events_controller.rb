@@ -1,18 +1,18 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
   before_action :set_event, only: %i[show edit update destroy]
+  # колбек для проверки пинкода перед показом страницы события
   before_action :password_guard!, only: [:show]
+  # колбеки Pundit
   after_action :verify_authorized, only: %i[show edit update destroy]
   after_action :verify_policy_scoped, only: :index
 
   # GET /events
-  # GET /events.json
   def index
     @events = policy_scope(Event)
   end
 
   # GET /events/1
-  # GET /events/1.json
   def show
     authorize @event
     @new_comment = @event.comments.build(params[:comment])
@@ -89,11 +89,12 @@ class EventsController < ApplicationController
     return true if @event.pincode.blank?
     return true if signed_in? && current_user == @event.user
 
+    # Проверяем верно ли введен пинкод, и сохраняем его в куках
     if params[:pincode].present? && @event.pincode_valid?(params[:pincode])
       cookies.permanent["events_#{@event.id}_pincode"] = params[:pincode]
     end
 
-    # Проверяем — верный ли в куках пинкод, если нет — ругаемся и рендерим форму
+    # Проверяем верный ли в куках пинкод, если нет — ругаемся и рендерим форму
     pincode = cookies.permanent["events_#{@event.id}_pincode"]
     unless @event.pincode_valid?(pincode)
       if params[:pincode].present?

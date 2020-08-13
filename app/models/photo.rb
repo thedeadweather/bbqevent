@@ -4,6 +4,7 @@ class Photo < ApplicationRecord
 
   validates :photo, presence: true
 
+  # монтируем загрузчик фотографий
   mount_uploader :photo, PhotoUploader
 
   scope :persisted, -> { where "id IS NOT NULL" }

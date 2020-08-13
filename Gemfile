@@ -24,21 +24,22 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# гем для проверки авторизации
 gem 'pundit'
 gem 'devise'
+# гемы для интернационализации страниц на русский язык
 gem 'devise-i18n'
 gem 'rails-i18n'
+# гемы для загрузки и обработки фотографий, а также их хранении на AWS S3
 gem 'carrierwave'
 gem 'rmagick'
 gem 'fog-aws'
-gem 'mailjet'
+# гемы для авторизации через соц сети
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
-
 # backend adapter
 gem 'resque'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

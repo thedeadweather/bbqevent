@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   after_commit :link_subscriptions, on: :create
 
+  # монтируем загрузчик аватарок
   mount_uploader :avatar, AvatarUploader
 
   def send_devise_notification(notification, *args)

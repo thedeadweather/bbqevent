@@ -6,13 +6,9 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:destroy]
   skip_before_action :verify_authenticity_token, only: [:destroy]
 
-  # Действие для создания новой фотографии
-  # Обратите внимание, что фотку может сейчас добавить даже неавторизованный пользовать
-  # Смотрите домашки!
   def create
     # Создаем новую фотографию у нужного события @event
     @new_photo = @event.photos.build(photo_params)
-
     # Проставляем у фотографии пользователя
     @new_photo.user = current_user
 
@@ -43,8 +39,9 @@ class PhotosController < ApplicationController
   end
 
   private
+
   # Так как фотография — вложенный ресурс, то в params[:event_id] рельсы
-  # автоматически положает id события, которому принадлежит фотография
+  # автоматически положат id события, которому принадлежит фотография
   # найденное событие будет лежать в переменной контроллера @event
   def set_event
     @event = Event.find(params[:event_id])

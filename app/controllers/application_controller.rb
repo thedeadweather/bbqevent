@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  # настройка девайса при создании или обновлении юзера
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # хелпер для авторизации пользователя при редактировании или удалении
+  # коммента, фотографии или подписки на событие
   helper_method :current_user_can_edit?
 
   def configure_permitted_parameters
@@ -14,6 +17,7 @@ class ApplicationController < ActionController::Base
     (model.user == current_user || (model.try(:event).present? && model.event.user == current_user))
   end
 
+  # вызов исключения при ошибки авторизации Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private

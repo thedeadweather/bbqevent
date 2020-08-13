@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :user, optional: true
 
   validates :body, presence: true
+  # коммент может оставить незарегенный юзер, для таких не проверяем юзернейм
   validates :user_name, presence: true, unless: -> { user.present? }
 
   def user_name

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :set_current_user, except: [:show]
 
   # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
   end
